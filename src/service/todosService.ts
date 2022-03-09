@@ -1,5 +1,5 @@
 import { api } from './api';
 
-export async function getTodos(id: string) {
-  return api.get(`/todos/${id}`).then((x) => x.data);
+export async function getTodos() {
+  return api.get('/todos/list').then((x) => x.data);
 }

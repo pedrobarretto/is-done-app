@@ -4,9 +4,10 @@ const getToken = () => {
   return localStorage.getItem('AuthToken');
 };
 
+// 'https://isdone.pedrobarretto.dev.br/api'
 export const api = axios.create({
-  baseURL: 'https://isdone.pedrobarretto.dev.br/api',
+  baseURL: 'http://localhost:3333',
   headers: {
-    Authorization: `${getToken()}`,
+    Authorization: `${localStorage.getItem('AuthToken')}`,
   },
 });

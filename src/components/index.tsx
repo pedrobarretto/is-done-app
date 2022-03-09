@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { UserLogin } from '../interfaces/User/Auth';
 import { login } from '../service/authService';
+import { getTodos } from '../service/todosService';
 
 export function Home() {
   const [loginModel, setLoginModel] = useState<UserLogin>({
@@ -10,6 +11,12 @@ export function Home() {
 
   const handleLogin = async () => {
     const res = await login(loginModel);
+    console.log(res);
+    localStorage.setItem('AuthToken', res.token);
+  };
+
+  const handleListTodos = async () => {
+    const res = await getTodos();
     console.log(res);
   };
 
@@ -33,7 +40,7 @@ export function Home() {
         Login
       </button>
 
-      <button type='button' onClick={handleLogin}>
+      <button type='button' onClick={handleListTodos}>
         Get Todos
       </button>
     </div>
