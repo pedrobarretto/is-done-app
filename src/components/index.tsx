@@ -29,6 +29,11 @@ export function Home() {
     console.log(res);
   };
 
+  const handleMarkAsDone = async (id: string) => {
+    const res = await todosService.markAsDone(id);
+    console.log(res);
+  };
+
   return (
     <div>
       <div>
@@ -64,9 +69,20 @@ export function Home() {
           Create Todo
         </button>
       </div>
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
         {todos.map((x: any) => {
-          return <span key={x.id}>{x.text}</span>;
+          return (
+            <div>
+              <span key={x.id}>{x.text}</span>
+              <button
+                type='button'
+                key={x.createdDate}
+                onClick={() => handleMarkAsDone(x.id)}
+              >
+                Check
+              </button>
+            </div>
+          );
         })}
       </div>
     </div>

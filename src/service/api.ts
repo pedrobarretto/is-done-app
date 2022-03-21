@@ -6,9 +6,6 @@ export class Service {
     withCredentials: true,
     timeout: 12000,
     headers: { 'Content-Type': 'application/json' },
-    // headers: {
-    //   Authorization: `${localStorage.getItem('AuthToken')}`,
-    // },
   });
 
   interceptor = this.api.interceptors.request.use(
@@ -74,12 +71,3 @@ export class Service {
     return this.api.patch(url, params, config);
   };
 }
-
-// export const api = axios.create({
-//   baseURL: 'http://localhost:3333',
-//   withCredentials: true,
-//   timeout: 12000,
-//   // headers: {
-//   //   Authorization: `${localStorage.getItem('AuthToken')}`,
-//   // },
-// });

@@ -1,5 +1,4 @@
 import { UserLogin } from '../interfaces/User/Auth';
-// import { api } from './api';
 import { Service } from './api';
 
 export class AuthService {
@@ -9,10 +8,6 @@ export class AuthService {
   public login = async (dto: UserLogin) =>
     this.api.post('/user/login', dto).then((x) => x.data);
 }
-
-// export async function login(dto: UserLogin) {
-//   return api.post('/user/login', dto).then((x) => x.data);
-// }
 
 const service = new Service();
 const authService = new AuthService(service);
