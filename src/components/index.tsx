@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { UserLogin } from '../interfaces/User/Auth';
-import { login } from '../service/authService';
-import { createTodo, getTodos } from '../service/todosService';
+import { authService } from '../service/authService';
+import { todosService } from '../service/todosService';
 
 export function Home() {
   const [loginModel, setLoginModel] = useState<UserLogin>({
@@ -13,19 +13,19 @@ export function Home() {
   const [todos, setTodos] = useState([]);
 
   const handleLogin = async () => {
-    const res = await login(loginModel);
+    const res = await authService.login(loginModel);
     console.log(res);
     localStorage.setItem('AuthToken', res.token);
   };
 
   const handleListTodos = async () => {
-    const res = await getTodos();
+    const res = await todosService.getTodos();
     setTodos(res);
     console.log(res);
   };
 
   const handleCreateTodo = async () => {
-    const res = await createTodo(todo);
+    const res = await todosService.createTodo(todo);
     console.log(res);
   };
 

@@ -1,6 +1,19 @@
 import { UserLogin } from '../interfaces/User/Auth';
-import { api } from './api';
+// import { api } from './api';
+import { Service } from './api';
 
-export async function login(dto: UserLogin) {
-  return api.post('/user/login', dto).then((x) => x.data);
+export class AuthService {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(private api: Service) {}
+
+  public login = async (dto: UserLogin) =>
+    this.api.post('/user/login', dto).then((x) => x.data);
 }
+
+// export async function login(dto: UserLogin) {
+//   return api.post('/user/login', dto).then((x) => x.data);
+// }
+
+const service = new Service();
+const authService = new AuthService(service);
+export { authService };
